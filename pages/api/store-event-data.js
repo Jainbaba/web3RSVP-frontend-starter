@@ -1,9 +1,8 @@
-import { FILE } from "dns";
 import { Web3Storage, File, getFilesFromPath } from "web3.storage";
 const { resolve } = require("path");
 
 export default async function handler(req, res) {
-  if (req.Method == "POST") {
+  if (req.method == "POST") {
     return await storeEventDate(req, res);
   } else {
     return res

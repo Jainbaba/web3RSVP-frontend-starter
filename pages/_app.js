@@ -3,6 +3,8 @@ import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { chain, configureChains, createClient, WagmiConfig } from "wagmi";
 import { infuraProvider } from "wagmi/providers/infura";
 import { publicProvider } from "wagmi/providers/public";
+import { ApolloProvider } from "@apollo/client";
+import client from "../utils/apollo-client";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 
@@ -28,9 +30,11 @@ export default function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
+        <ApolloProvider client={client}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
+        </ApolloProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
